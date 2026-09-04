@@ -24,7 +24,7 @@ jobs:
           push: false
           tags: kammana/gha-pyapp:${{ env.SHORT_SHA }}
       - name: Trivy Image Scan
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@v0.35.0
         with:
           image-ref: kammana/gha-pyapp:${{ env.SHORT_SHA }}
           severity: CRITICAL,HIGH
