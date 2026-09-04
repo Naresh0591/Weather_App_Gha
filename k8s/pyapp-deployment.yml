@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyapp
+  labels:
+    app: pyapp
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: pyapp
+  template:
+    metadata:
+      labels:
+        app: pyapp
+    spec:
+      containers:
+        - name: pyapp
+          image: kammana/gha-pyapp:b0e0af8
+          ports:
+            - containerPort: 8000
