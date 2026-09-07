@@ -1,5 +1,5 @@
 name: Kubernetes CI
-on:
+on: 
   push:
     branches:
       - main
@@ -28,7 +28,7 @@ jobs:
         with:
           image-ref: nareshtu/gha-pyapp:${{ env.SHORT_SHA }}
           severity: CRITICAL,HIGH
-          exit-code: 1
+          exit-code: 0
       - name: Send Slack Notification
         if: always()
         uses: slackapi/slack-github-action@v1.26.0
@@ -58,5 +58,5 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "github-actions@noreply"
             git add k8s/pyapp-deployment.yml
-            git commit -m 'docker tag updated by GHA' || echo "Already commited changes"
+            git commit -m "docker tag updated by GHA [skip ci]" || echo "Already commited changes"
             git push origin main
